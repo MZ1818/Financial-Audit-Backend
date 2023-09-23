@@ -15,6 +15,7 @@ namespace backend.Core.Context
         public DbSet<Notes> Notess { get; set; }
 
         public DbSet<Users> Users { get; set; }
+        public DbSet<Users> Document { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
