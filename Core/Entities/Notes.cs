@@ -1,14 +1,23 @@
-﻿namespace backend.Core.Entities
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace backend.Core.Entities
 {
-    public class Notes : BaseEntity 
+    public class Notes 
     {
-        public string NotesTitle { get; set; }
-        public string NotesDescription { get; set; }
-      
+        [Key]
+        public long NoteId { get; set; }
+        public string sender { get; set; }
+        public string receiver { get; set; }
+        public string MessagText { get; set; }
+        public DateTime DateCreated { get; set; }
+
 
         // Relations
-
+        [ForeignKey("Task")]
         public long TaskId { get; set; }
+        public bool status { get; set; }
         public Task Task { get; set; }
     }
 }

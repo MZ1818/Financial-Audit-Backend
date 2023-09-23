@@ -16,7 +16,7 @@ namespace backend.Controllers
     public class NotesController : Controller
     {
 
-        private ApplicationDbContext _context { get; }
+        private readonly ApplicationDbContext _context;
         private IMapper _mapper { get; }
 
         public NotesController(ApplicationDbContext context, IMapper mapper)
@@ -48,6 +48,13 @@ namespace backend.Controllers
             var convertdNotess = _mapper.Map<IEnumerable<NotesGetDto>>(notess);
 
             return Ok(convertdNotess);
+        }
+
+        [HttpGet]
+        public List<Notes> ViewNotes(long noteId)
+        {
+            //return _context.Notess.ToList();
+            return _context.Notess.Where(x => x.NoteId == noteId).ToList();
         }
     }
 }

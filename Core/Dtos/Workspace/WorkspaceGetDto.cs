@@ -2,8 +2,9 @@
 {
     public class WorkspaceGetDto
     {
-        public long ID { get; set; }
-        public string Name { get; set; }
+        public long WorkspaceId { get; set; }
+        public string title { get; set; }
+        public string ComapanyId { get; set; }
         public string CompanyName { get; set; }
     }
 }

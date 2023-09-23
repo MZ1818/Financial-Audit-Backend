@@ -2,7 +2,8 @@
 {
     public class WorkspaceCreateDto
     {
-        public string Name { get; set; }
+        public string title { get; set; }
+        public string ComapanyId { get; set; }
         public string CompanyName { get; set; }
     }
 }
