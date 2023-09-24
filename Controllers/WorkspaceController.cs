@@ -48,6 +48,14 @@ namespace backend.Controllers
             return Ok(convertedWorkspaces);
         }
 
+        [HttpGet]
+        [Route("GetNumberOfTasks")]
+        public long getNumberOfNotes(long WorkspaceId)
+        {
+            var count = _context.Tasks.Where(x => x.WorkspaceId == WorkspaceId).Count();
+            return count;
+        }
+
 
     }
 }
