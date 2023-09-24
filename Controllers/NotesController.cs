@@ -17,6 +17,7 @@ namespace backend.Controllers
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly Notes notes;
         private IMapper _mapper { get; }
 
         public NotesController(ApplicationDbContext context, IMapper mapper)
@@ -51,10 +52,20 @@ namespace backend.Controllers
         }
 
         [HttpGet]
+        [Route("GetNotesByID")]
         public List<Notes> ViewNotes(long noteId)
         {
             //return _context.Notess.ToList();
             return _context.Notess.Where(x => x.NoteId == noteId).ToList();
+            
+        }
+
+        [HttpGet]
+        [Route("GetNumberOfNotes")]
+        public long getNumberOfNotes(long TaskId)
+        {
+           var count = _context.Notess.Where(x => x.TaskId == TaskId).Count();
+            return count;
         }
     }
 }
